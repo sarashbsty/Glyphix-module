@@ -1,9 +1,9 @@
 #include<iostream>
-#include "letters.h" //For generate Function
-#include "iofunc.h"
+#include "generate.h"
+#include "glyphix.h"
 using namespace std;
 
-void display(string str,int size,char style,char choice){
+void gly_display(string str,int size,char style,char choice){
 	
     cout<<endl;
 	int n,m = 0;
@@ -11,7 +11,7 @@ void display(string str,int size,char style,char choice){
 		case '1':	while(m < str.length()){
 						for(int row = 1; row <= size; row++){
 							for(n = m; str[n] != '\n'; n++)
-								cout<<generate(str[n],size,row)<<"  ";
+								cout<<generate(str[n],size,row,'~')<<"  ";
 							cout<<endl;
 						}
 						cout<<endl;

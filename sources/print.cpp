@@ -1,11 +1,11 @@
 #include<fstream>
-#include "letters.h" //For generate Function
-#include "iofunc.h"
+#include "generate.h" //For generate Function
+#include "glyphix.h"
 using namespace std;
 
-void print(string str,int size,char style,char choice){
+void gly_print(string str,int size,char style,char choice){
 	
-	ofstream file("alphabet.txt");
+	ofstream file("glyphix print.txt");
 	int n,m = 0;
 	switch(choice){
 		case '1':	while(m < str.length()){

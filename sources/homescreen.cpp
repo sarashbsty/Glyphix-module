@@ -1,6 +1,6 @@
 #include<iostream>
-#include "iofunc.h"
-#include "letters.h" //For generate Function
+#include "generate.h" //For generate Function
+#include "homescreen.h"
 using namespace std;
 
 void homescreen(){

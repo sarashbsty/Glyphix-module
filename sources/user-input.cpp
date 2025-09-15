@@ -1,7 +1,8 @@
 #include<iostream>
 #include<fstream>
 #include <limits>
-#include "iofunc.h"
+
+#include "UserInput.h"
 #define clear_buffer std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n')
 using namespace std;
 

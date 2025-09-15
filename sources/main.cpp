@@ -22,9 +22,12 @@ SOFTWARE.
 */
 
 #include<iostream>
-#include<fstream>
-#include "iofunc.h"   // for display , print , homescreen , input
+#include "glyphix.h"     // for gly_display(), gly_print() 
+#include "homescreen.h"  // for homescreen()
+#include "UserInput.h"   // user_input()
 using namespace std;
+
+void user_input(string &str,int &size,char &style, char &choice);
 
 int main(){
 	
@@ -37,18 +40,18 @@ int main(){
 	user_input(word,size,style,choice);
 	  
 	system("cls");
-	display(word,size,style,choice);
+	gly_display(word,size,style,choice);
  		  
 	cout<<"\nSize : "<<size<<endl;
 	cout<<"Choice : "<<choice<<endl;
 	if(choice == '2') cout<<"Style : "<<style<<endl<<endl;
 	
-	cout<<"\n\nEnter y to print, or anything to exit : ";
+	cout<<"\n\nEnter P to print, or anything to exit : ";
 	cin>>ToPrint;
 	
-	if(ToPrint == 'y' || ToPrint == 'Y'){
-		print(word,size,style,choice);
-		cout<<"Done";
+	if(ToPrint == 'p' || ToPrint == 'P'){
+		gly_print(word,size,style,choice);
+		cout<<"Saved as 'Glyphix print.txt' in Current Directory\n";
 	}
 	
     return 0;

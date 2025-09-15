@@ -1,6 +1,6 @@
 #include<iostream>
-#include "LettersFunc.h"  // for functions A,B,C,....
-#include "letters.h"
+#include "LetterFuncs.h"  // for functions A,B,C,....
+#include "generate.h"
 using namespace std;
 
 string generate(char ch, int size, int row, char style){
