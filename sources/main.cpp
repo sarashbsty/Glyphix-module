@@ -44,11 +44,11 @@ int main(){
 	cout<<"Choice : "<<choice<<endl;
 	if(choice == '2') cout<<"Style : "<<style<<endl<<endl;
 	
-	cout<<"\n\nEnter P to print, or anything to exit : ";
+	cout<<"\n\nEnter S to Save, or anything to exit : ";
 	cin>>ToPrint;
 	
-	if(ToPrint == 'p' || ToPrint == 'P'){
-		gly_print(word,size,style,choice);
+	if(ToPrint == 's' || ToPrint == 'S'){
+		gly_write(word,size,style,choice);
 		cout<<"Saved as 'Glyphix print.txt' in Current Directory\n";
 	}
 	
