@@ -10,7 +10,7 @@ void user_input(string &str,int &size,char &style, char &choice){
 	
 	cout<<"Choose a style (0 to exit) : "; cin>>choice; clear_buffer;
 	while(choice < '0' || choice > '3'){
-		cout<<"INVALID. Choose correct option(1 - 3): "; 
+		cout<<"INVALID. Choose correct option(0 - 3): "; 
 		cin>>choice;
 		clear_buffer;
 	}
@@ -27,15 +27,15 @@ void user_input(string &str,int &size,char &style, char &choice){
 	}
 	
 	char choice2;
-	cout<<"Input from (1) file or (2) keyboard : "; cin>>choice2; clear_buffer;
+	cout<<"Input from (1) User or (2) textfile : "; cin>>choice2; clear_buffer;
 	while(choice2 < '1' || choice2 > '2'){
 		cout<<"INVALID. Choose correct option(1 or 2): "; 
 		cin>>choice2;
 		clear_buffer;
 	}
 	switch(choice2){		   
-		case '1' :{  // need to write inside block. remove and see the error. compiler dependent
-					cout<<"'--- Enter Name or directory of the file : "; getline(cin,str); 
+		case '2' :{  // need to write inside block. remove and see the error. compiler dependent
+					cout<<"'--- Enter Name or directory of the textfile : "; getline(cin,str); 
 				    ifstream file(str);
 				    if(file.is_open() && file.peek() != ifstream::traits_type::eof()){
 					    string line; str = "";
@@ -49,7 +49,7 @@ void user_input(string &str,int &size,char &style, char &choice){
 				    else cout<<"\n\""<<str<<"\""<<" : file not found or has no data. Instead....\n"; 
 				}
 				
-		case '2' : cout<<"'--- Enter your Sentence : "; 
+		case '1' : cout<<"'--- Enter your text : "; 
 				   getline(cin,str); 
 				   str.push_back('\n');
 	}

@@ -3,7 +3,7 @@
 #include "glyphix.h"
 using namespace std;
 
-void gly_print(string str,int size,char style,char choice){
+void gly_write(string str,int size,char style,char choice){
 	
 	ofstream file("glyphix print.txt");
 	int n,m = 0;
