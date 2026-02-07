@@ -10,7 +10,7 @@ void user_input(string &str,int &size,char &style, char &choice){
 	
 	cout<<"Choose a style (0 to exit) : "; cin>>choice; clear_buffer;
 	while(choice < '0' || choice > '3'){
-		cout<<"INVALID. Choose correct option(1 - 3): "; 
+		cout<<"INVALID. Choose correct option(0 - 3): "; 
 		cin>>choice;
 		clear_buffer;
 	}
