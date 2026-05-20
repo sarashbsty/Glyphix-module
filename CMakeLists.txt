@@ -4,10 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(include)
 
-file(GLOB_RECURSE ALL_SOURCES
-    "sources/*.cpp"
-    "letters/*.cpp"
-)
+file(GLOB_RECURSE ALL_SOURCES "sources/*.cpp")
 
 add_executable(glyphix ${ALL_SOURCES})
 
