@@ -39,32 +39,37 @@ static char* createJson(int error, const char *errorMsg, const char *text){
 extern "C"{
 	char* run_glyphix(const char* json_text)
 	{
-		int row = 0;
-		char style = '\0';
-		string text, out;
-
 		cJSON *inputRoot = cJSON_Parse(json_text);
 
-		if(!inputRoot){
-			return createJson(1, "Parsing Failed", "");
-		}
-		cJSON *rowJson = cJSON_GetObjectItem(inputRoot, "row");
+		if(!inputRoot) return createJson(1, "Parsing Failed", "");
+
+		cJSON *sizeJson = cJSON_GetObjectItem(inputRoot, "size");
 		cJSON *textJson = cJSON_GetObjectItem(inputRoot, "text");
 		cJSON *styleJson = cJSON_GetObjectItem(inputRoot, "style");
 
-		if(!cJSON_IsNumber(rowJson) || !cJSON_IsString(textJson) ||
+		//Input Validation: phase 1
+		if(!cJSON_IsNumber(sizeJson) || !cJSON_IsString(textJson) ||
 		!cJSON_IsString(styleJson) || strlen(styleJson->valuestring) != 1)
 		{
 			cJSON_Delete(inputRoot);
 			return createJson(1, "Invalid Inputs", "");
 		}    
 
-		row = rowJson->valueint;
-		text = textJson->valuestring;
-		style = styleJson->valuestring[0];
+		int size = sizeJson->valueint;
+		string text = textJson->valuestring;
+		char style = styleJson->valuestring[0];
 		cJSON_Delete(inputRoot);
+		
+		//Input Validation: phase 2
+		if(size < 5) return createJson(1, "Size smaller than 5 given", "");
+		if(text.length() == 0) return createJson(1, "Empty text given", "");
+		for(int i = 0; i < text.length(); i++){
+			char ch = text[i];
+			if((ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z') && ch != ' ')
+				return createJson(1, "Given text has non-alphabetic Character", "");
+		}
 
-		out = glyphix(text, row, style);
+		string out = glyphix(text, size, style);
 		return createJson(0, "", out.c_str());
 	}
 
@@ -74,7 +79,7 @@ extern "C"{
 }
 
 int main(){
-	const char* jsonText = R"({"row" : 5 , "text" : "sarh" , "style" : "~"})";
-	char* out = run_glyphix(jsonText);
-	cout<<out;
+	const char* jsonText = R"({"size" : 4 , "text" : "A" , "style" : "~"})";
+	cout<<"Input Json: "<<jsonText;
+	cout<<"\n\noutput JSON:\n"<<run_glyphix(jsonText);
 }
